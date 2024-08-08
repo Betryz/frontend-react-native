@@ -1,11 +1,17 @@
 import { View, Text, StyleSheet } from "react-native"
 
+
+
 export default function Content(){
 
     return (
         <View style={styles.content}>
 
+        
+
         <Text style={styles.texto}>Content</Text>
+
+
 
       </View>
 
