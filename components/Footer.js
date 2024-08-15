@@ -6,7 +6,7 @@ export default function Footer() {
 
         <View style={styles.footer}>
 
-            <Text style={styles.texto}>Footer</Text>
+            <Text style={styles.texto}>Copyright © 2024 Renan Cavichi</Text>
 
         </View>
     )
@@ -14,17 +14,18 @@ export default function Footer() {
 
 const styles = StyleSheet.create({
     footer:{
-        flex: 2,
+        padding: 15,
         backgroundColor:'#013220',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        alignItems:'center'
     
       },
       texto: {
         display: 'flex',
-        color:'green',
+        color:'white',
         justifyContent: 'center',
-        fontWeight: 'bold',
-        fontSize: 20
+       
+ 
         
         
       }

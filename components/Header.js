@@ -9,18 +9,15 @@ export default function Header() {
         <View style={styles.header}>
 
             <View style={styles.user}>
-                <Image style={styles.avatar} source="https://i0.statig.com.br/bancodeimagens/64/ly/sp/64lyspe2znty2fc9ndipq80w0.jpg" />
+                <Image style={styles.avatar} source={require('../assets/64lyspe2znty2fc9ndipq80w0.webp')}
+                //source="https://i0.statig.com.br/bancodeimagens/64/ly/sp/64lyspe2znty2fc9ndipq80w0.jpg" 
+                />
 
                 <Text style={styles.texto}>Beatryz Freitas</Text>
 
             </View>
 
             <MaterialCommunityIcons style={styles.menu} name="menu" size={24}  />
-
-
-            
-
-
 
         </View>
 
@@ -29,12 +26,10 @@ export default function Header() {
 
 const styles = StyleSheet.create({
     header: {
-        flex: 1,
-    
-        justifyContent: 'center',
+      
         alignItems: 'center',
         justifyContent:'space-between',
-        paddingHorizontal: 15,
+        padding: 15,
         flexDirection: 'row',
         backgroundColor: '#013220',
     
