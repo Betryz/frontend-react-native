@@ -14,10 +14,6 @@ export default function App() {
 
       <Header /> 
 
-
-  
-
-
       <Content />
 
       <Footer />
