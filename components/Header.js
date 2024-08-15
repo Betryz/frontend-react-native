@@ -1,6 +1,7 @@
 import { StyleSheet, View, Text } from "react-native"
 import { Image } from "react-native-web"
-import { CgMenu } from "react-icons/cg";
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+
 
 
 export default function Header() {
@@ -14,7 +15,7 @@ export default function Header() {
 
             </View>
 
-            <CgMenu  style={styles.menu} />
+            <MaterialCommunityIcons style={styles.menu} name="menu" size={24}  />
 
 
             
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
     menu: {
         width: 25,
         height: 25,
-        padding: 10,
+       
       color: 'white'
 
 
