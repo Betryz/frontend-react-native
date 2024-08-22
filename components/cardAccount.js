@@ -1,7 +1,7 @@
-import { View, Image, StyleSheet, Text } from "react-native-web";
+import { View, StyleSheet, Text } from "react-native";
+import {Image} from "expo-image"
 
-
-export default function CardAccount() {
+export default function CardAccount({ service, userName, imgUrl }) {
 
     return (
 
@@ -9,12 +9,12 @@ export default function CardAccount() {
 
         <View style={styles.card}>
 
-            <Image style={styles.img}
-                source={require('../assets/favicon.png')} />
+            <Image style={styles.img} source={imgUrl} />
+
 
             <View style={styles.info}>
-                <Text style={styles.gmail} >Gmail</Text>
-                <Text style={styles.email}>beatryz@gmail.com</Text>
+                <Text style={styles.gmail} >{service}</Text>
+                <Text style={styles.email}>{userName}</Text>
 
             </View>
 
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     card: {
         height: 60,
         alignItems: 'center',
-        gap:10,
+        gap: 10,
         flexDirection: 'row',
         borderRadius: 10,
         margin: 10,
@@ -37,16 +37,22 @@ const styles = StyleSheet.create({
     },
     info: {
         padding: 10,
-        
+
     },
     gmail: {
         borderBottomWidth: 1,
         borderColor: '#eeeee2',
         fontWeight: 600
-       
+
     },
     email: {
         fontWeight: 100
+    },
+    img: {
+        height: 50,
+        width: 50,
     }
+   
+
 
 })

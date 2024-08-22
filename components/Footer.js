@@ -1,10 +1,12 @@
 import { StyleSheet, View, Text } from "react-native"
 
+
 export default function Footer() {
 
     return (
 
         <View style={styles.footer}>
+            
 
             <Text style={styles.texto}>Copyright © 2024 Renan Cavichi</Text>
 
