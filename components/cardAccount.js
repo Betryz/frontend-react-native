@@ -1,11 +1,9 @@
 import { View, StyleSheet, Text } from "react-native";
 import {Image} from "expo-image"
 
-export default function CardAccount({ service, userName, imgUrl }) {
+export default function Content() {
 
     return (
-
-
 
         <View style={styles.card}>
 
