@@ -1,8 +1,31 @@
-import { View, Text } from "react-native-web";
+import { View, Text, Pressable } from "react-native-web";
 import { Image } from "expo-image";
-import AntDesign from '@expo/vector-icons/AntDesign';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
-export default function CardAccount2({ userName, service, imgUrl }) {
+export default function CardAccount2({ id, userName, service, imgUrl, setAccounts, accounts }) {
+
+
+    const handlerDelete = async () => {
+
+        const response = await fetch(`http://localhost:3000/account/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        )
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data)
+            const newAccounts = accounts.filter((item) => item.id !== id)
+            setAccounts(newAccounts)
+            return
+        }
+        console.log('Erro ao carregar accounts')
+        return
+    }
+
+
 
 
     return (
@@ -17,15 +40,18 @@ export default function CardAccount2({ userName, service, imgUrl }) {
 
                 <View style={styles.barra}>
                     <Text style={styles.user} >{userName}</Text>
-                    <AntDesign name="rightcircle" style={styles.icon} size={24} color="gray" />
+
+                    <Pressable onPress={handlerDelete}>
+
+                        <Ionicons name="trash-bin" size={24} color="white" />
+
+                    </Pressable>
 
                 </View>
 
 
                 <Text style={styles.titulo}> {service} </Text>
                 <Image style={styles.img} source={imgUrl} />
-
-
 
 
             </View>
@@ -45,14 +71,15 @@ const styles = {
         flexDirection: "row",
         justifyContent: 'center',
         alignItens: 'center',
-       
+
 
     },
     tabelas: {
         marginTop: 50,
         borderWidth: 1,
-        borderRadius: 15,
-        borderColor: '#eeeee2',
+        borderRadius: 10,
+    
+        borderColor: 'black',
         width: 300,
         display: 'flex',
         justifyContent: 'center',
@@ -69,15 +96,16 @@ const styles = {
     img: {
         height: 80,
         width: 80,
-        marginLeft: 110
+        marginLeft: 110,
+        paddingVertical: 10
+     
     },
     user: {
         alignItens: 'center',
         display: 'flex',
         fontSize: 18,
-        fontWeight: 200
-      
-
+        fontWeight: 400, 
+        color: '#fff'
     },
     icon: {
         padding: 2
@@ -91,12 +119,13 @@ const styles = {
         alignItens: 'center',
         paddingHorizontal: 10,
         paddingHorizontal: 10,
+        backgroundColor: '#013220',
 
-
-        height:30,
-        borderTop: 2,
-        borderRadius: 7,
-        borderColor: '#eeeee2',
+        height: 30,
+       
+        borderRadius: 5,
+        borderTop: 10,
+      
         paddingLeft: 10
 
     }
