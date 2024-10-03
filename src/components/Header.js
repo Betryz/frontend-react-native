@@ -2,14 +2,19 @@ import { StyleSheet, View, Text } from "react-native"
 import { Image } from "react-native-web"
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
+import Button from "./Button";
+
 
 
 export default function Header() {
+
+
+
     return (
         <View style={styles.header}>
 
             <View style={styles.user}>
-                <Image style={styles.avatar} source={require('../assets/64lyspe2znty2fc9ndipq80w0.webp')}
+                <Image style={styles.avatar} source={require('../../assets/64lyspe2znty2fc9ndipq80w0.webp')}
                 //source="https://i0.statig.com.br/bancodeimagens/64/ly/sp/64lyspe2znty2fc9ndipq80w0.jpg" 
                 />
 
@@ -17,7 +22,12 @@ export default function Header() {
 
             </View>
 
-            <MaterialCommunityIcons style={styles.menu} name="menu" size={24}  />
+
+            <Button onPress={() => navigation.navigate('signup', {teste: 'Olá'})}> 
+            <MaterialCommunityIcons style={styles.menu} name="plus" size={24}  />
+                 </Button>
+
+            
 
         </View>
 

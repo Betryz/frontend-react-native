@@ -1,9 +1,11 @@
 import { View, Text, Pressable } from "react-native-web";
 import { Image } from "expo-image";
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { useNavigation } from "expo-router";
 
 export default function CardAccount2({ id, userName, service, imgUrl, setAccounts, accounts }) {
 
+    const navigation = useNavigation()
 
     const handlerDelete = async () => {
 
@@ -32,6 +34,7 @@ export default function CardAccount2({ id, userName, service, imgUrl, setAccount
 
 
         <View style={styles.card}>
+            <Pressable onPress={() => navigation.navigate}/> 
 
 
             < View style={styles.tabelas}>
@@ -120,14 +123,10 @@ const styles = {
         paddingHorizontal: 10,
         paddingHorizontal: 10,
         backgroundColor: '#013220',
-
         height: 30,
-       
         borderRadius: 5,
         borderTop: 10,
-      
         paddingLeft: 10
-
     }
 
 }
