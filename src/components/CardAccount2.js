@@ -1,23 +1,20 @@
-import { View, Text, Pressable } from "react-native-web";
-import { Image } from "expo-image";
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { useNavigation } from "expo-router";
+import {View, Text, StyleSheet, Pressable} from 'react-native'
+import { Image } from 'expo-image'
+import { useNavigation } from 'expo-router'
 
-export default function CardAccount2({ id, userName, service, imgUrl, setAccounts, accounts }) {
+export default function CardAccount2 ({ id, service, userName, imgUrl, pass, accounts, setAccounts }) {
 
     const navigation = useNavigation()
 
-    const handlerDelete = async () => {
-
+    const handleDelete = async () => {
         const response = await fetch(`http://localhost:3000/account/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
             }
-        }
-        )
-        if (response.ok) {
-            const data = await response.json();
+        })
+        if(response.ok){
+            const data = await response.json()
             console.log(data)
             const newAccounts = accounts.filter((item) => item.id !== id)
             setAccounts(newAccounts)
@@ -27,106 +24,45 @@ export default function CardAccount2({ id, userName, service, imgUrl, setAccount
         return
     }
 
-
-
-
     return (
-
-
-        <View style={styles.card}>
-            <Pressable onPress={() => navigation.navigate}/> 
-
-
-            < View style={styles.tabelas}>
-
-
-
-                <View style={styles.barra}>
-                    <Text style={styles.user} >{userName}</Text>
-
-                    <Pressable onPress={handlerDelete}>
-
-                        <Ionicons name="trash-bin" size={24} color="white" />
-
-                    </Pressable>
-
+            <View style={styles.card}>
+                <Pressable onPress={() => navigation.navigate('showPass', {imgUrl, pass, service, userName})}>
+                <Image 
+                    style={styles.logo} 
+                    source={imgUrl}
+                />
+                </Pressable>
+                <View style={styles.content}>
+                    <Text style={styles.service}>{service}</Text>
+                    <Text style={styles.username}>{userName}</Text>
+                    <Pressable onPress={handleDelete}><Text>🗑 Excluir</Text></Pressable>
                 </View>
-
-
-                <Text style={styles.titulo}> {service} </Text>
-                <Image style={styles.img} source={imgUrl} />
-
-
             </View>
-
-        </View>
     )
-
-
-
 }
 
-const styles = {
-
+const styles = StyleSheet.create({
     card: {
-
-        display: 'flex',
-        flexDirection: "row",
-        justifyContent: 'center',
-        alignItens: 'center',
-
-
-    },
-    tabelas: {
-        marginTop: 50,
+        padding: 10,
+        borderStyle: 'solid',
+        borderColor: '#EEEEEE',
         borderWidth: 1,
-        borderRadius: 10,
-    
-        borderColor: 'black',
-        width: 300,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItens: 'center'
-
-    },
-    titulo: {
-        fontSize: 20,
-        display: 'flex',
-        justifyContent: 'center',
-        fontWeight: 500
-
-    },
-    img: {
-        height: 80,
-        width: 80,
-        marginLeft: 110,
-        paddingVertical: 10
-     
-    },
-    user: {
-        alignItens: 'center',
-        display: 'flex',
-        fontSize: 18,
-        fontWeight: 400, 
-        color: '#fff'
-    },
-    icon: {
-        padding: 2
-
-    },
-    barra: {
-        display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        borderWidth: 1,
-        alignItens: 'center',
-        paddingHorizontal: 10,
-        paddingHorizontal: 10,
-        backgroundColor: '#013220',
-        height: 30,
-        borderRadius: 5,
-        borderTop: 10,
-        paddingLeft: 10
+        gap: 15,
+        borderRadius: 10,
+        alignItems: 'center'
+    },
+    logo:{
+        width: 60,
+        height: 60
+    },
+    content: {
+        gap: 6
+    },
+    service: {
+        fontSize: 17
+    },
+    username: {
+        color: '#777777'
     }
-
-}
+})

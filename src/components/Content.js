@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import {View, StyleSheet, Text} from 'react-native'
 import CardAccount2 from './CardAccount2'
 import { useLocalSearchParams } from 'expo-router'
-
 export default function Content(){
 
   const [accounts, setAccounts] = useState([])

@@ -2,8 +2,7 @@ import { StyleSheet, View, Text } from "react-native"
 import { Image } from "react-native-web"
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
-import Button from "./Button";
-
+import { Link } from 'expo-router'
 
 
 export default function Header() {
@@ -21,11 +20,13 @@ export default function Header() {
                 <Text style={styles.texto}>Beatryz Freitas</Text>
 
             </View>
-
-
-            <Button onPress={() => navigation.navigate('signup', {teste: 'Olá'})}> 
+            <Link href="signup">
             <MaterialCommunityIcons style={styles.menu} name="plus" size={24}  />
-                 </Button>
+            </Link>
+
+          
+            
+                
 
             
 
