@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react'
 import {View, StyleSheet, Text} from 'react-native'
 import CardAccount2 from './CardAccount2'
-import { useLocalSearchParams } from 'expo-router'
+
+import { useAccountStore } from '../stores/useAccountStore'
+
 export default function Content(){
 
-  const [accounts, setAccounts] = useState([])
+
+  const {accounts, setAccounts } = useAccountStore()
+
  
    useEffect(() => {
         const getAccounts = async () => {
@@ -23,6 +27,9 @@ export default function Content(){
    }, [])
 
 
+
+
+
     return (
         <View style={styles.content}>
                
@@ -36,9 +43,6 @@ export default function Content(){
               service={account.service}
               imgUrl={account.logo_image}
               userName={account.username}
-              pass={account.pass}
-              accounts={accounts}
-              setAccounts={setAccounts}
             /> 
           )
         }
