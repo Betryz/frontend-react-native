@@ -17,14 +17,13 @@ export default function Footer() {
 const styles = StyleSheet.create({
     footer:{
         padding: 15,
-        backgroundColor:'#013220',
         justifyContent: 'center',
         alignItems:'center'
     
       },
       texto: {
         display: 'flex',
-        color:'white',
+        color:'gray',
         justifyContent: 'center',
        
  

@@ -1,19 +1,16 @@
-import {View, StyleSheet, Text, TextInput} from 'react-native'
+import {View, StyleSheet, Text, TextInput, Pressable} from 'react-native'
 import { Image } from 'expo-image'
 import Button from '../components/Button'
-import { useLocalSearchParams, useRouter } from 'expo-router'
+import { useLocalSearchParams, useRouter} from 'expo-router'
 import { useAccountStore } from '../stores/useAccountStore'
 
 export default function ShowPass(){
 
-    const router = useRouter();
-
+    const router = useRouter()
     const {id} = useLocalSearchParams()
-    const { accounts, deleteAccount}= useAccountStore()
+    const { accounts, deleteAccount } = useAccountStore()
 
     const account = accounts.find((item) => item.id === +id)
-    
-
 
     const handleDelete = async () => {
         const response = await fetch(`http://localhost:3000/account/${id}`, {
@@ -33,7 +30,6 @@ export default function ShowPass(){
         return
     }
 
-
     return (
         <View style={{padding: 20}}>
             <View style={styles.card}>
@@ -44,16 +40,16 @@ export default function ShowPass(){
                 <View style={styles.content}>
                     <Text style={styles.service}>{account?.service}</Text>
                     <Text style={styles.username}>{account?.username}</Text>
-                
                 </View>
         </View>
             <View>
                 <TextInput style={styles.input} value={account?.pass || ''} />
             </View>
             <Button>Copiar Senha</Button>
-                        
-
-            <Button onPress={handleDelete}>🗑 Excluir</Button>
+            <View style={{flexDirection: 'row', gap: 20, flex: 1, justifyContent: 'space-between'}}>
+                <Button onPress={() => router.push({pathname: '/update', params: {id}})}>Editar</Button>
+                <Button onPress={handleDelete}>🗑 Excluir</Button>
+            </View>
         </View>
     )
 }

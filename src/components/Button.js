@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
       marginVertical: 10,
       borderRadius: 5,
       paddingVertical: 5,
+      paddingHorizontal: 20
   
   
     }], butao: {

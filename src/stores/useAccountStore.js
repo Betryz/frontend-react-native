@@ -1,10 +1,10 @@
-import { create} from "zustand"
+import { create } from "zustand"
 
-// lista do que eu quero guardar
 export const useAccountStore = create((set) => ({
     accounts: [],
-    addAccount: (newAccount) => set((state) => ({accounts: [...state.accounts, newAccount]})),
-    setAccounts: (newAccounts) => set({ accounts: newAccounts}),
-    deleteAccount: (id) => set((state) => ({ accounts: state.accounts.filter((account) => account.id !== id)}))
-}))
 
+    addAccount: (newAccount) => set((state) => ({ accounts: [newAccount, ...state.accounts]})),
+    setAccounts: (newAccounts) => set({ accounts: newAccounts }),
+    deleteAccount: (id) => set((state) => ({ accounts: state.accounts.filter((account) => account.id !== id)})),
+    updateAccount: (newAccount) => set((state) => ({ accounts: state.accounts.map((account) => account.id === newAccount.id ? newAccount : account)}))
+}))
