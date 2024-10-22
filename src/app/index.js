@@ -1,33 +1,48 @@
 
-import { StyleSheet, ScrollView } from 'react-native';
-import Content from '../components/Content';
+import { ScrollView, StyleSheet, View, Text, ActivityIndicator } from 'react-native'
 import Footer from '../components/Footer';
-import Header from '../components/Header';
+import { useEffect } from 'react';
+import { useRouter } from 'expo-router';
 
 
 
 
 
-export default function Home() {
-  return (
+export default function Init() {
 
-    <ScrollView style={styles.container}>
+const router = useRouter()
 
-      <Header /> 
+useEffect(() => {
+    setTimeout(() => router.replace('/login'), 3000)
+}, [])
 
-      <Content />
+    return (
 
-      <Footer />
+        <ScrollView style={styles.container}>
+            <View style={{flex: 1, marginTop: 100, justifyContent: 'center',
+        alignItems: 'center' }}>
 
-    </ScrollView>
+                <Text style={{ fontsize: 50 }}>MyPass</Text>
+                <Text style={{ fontsize: 50 }}>Organize suas contas com MyPass</Text>
 
 
-  );
+                <ActivityIndicator style={{marginVertical: 30}} />
+
+                <Footer />
+
+            </View>
+
+
+        </ScrollView>
+
+
+    );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  }
+    container: {
+        flex: 1,
+       
+    }
 
 });

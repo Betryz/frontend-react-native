@@ -25,10 +25,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         color:'gray',
         justifyContent: 'center',
-       
- 
-        
-        
+
       }
 })
 
